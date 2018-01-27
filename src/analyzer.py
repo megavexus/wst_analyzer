@@ -65,17 +65,15 @@ class IP(Analyzer):
 
 
     def report(self):
-        return """The IP is {}
-        - Shodan analisys: {}
-        """.format(self.ip, self.host)
+        return self.host
 
 
 
     def analyze_shodan(self):
 
-        from shodan import WebAPI
+        from shodan import Shodan
         try:
-            shodan_api = WebAPI(self.TOKENS["shodan"])
+            shodan_api = Shodan(self.TOKENS["shodan"])
         except Exception as e:
             print("Ups! Ha ocurrido un error: %s" % e)
 
