@@ -1,5 +1,6 @@
 flask
 shodan
 ipwhois
+python-whois
 configparser
 OTXv2
