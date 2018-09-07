@@ -1,3 +1,5 @@
+from .exceptions import *
+
 class ScanTools(object):
     @staticmethod 
     def whois(ip=None, domain=None):
@@ -7,7 +9,10 @@ class ScanTools(object):
         results = {}
         if ip != None:
             from ipwhois import IPWhois
-            ipwhois = IPWhois(ip)
+            try:
+                ipwhois = IPWhois(ip)
+            except (ValueError):
+                raise IPNotFoundException(ip)
             results["ip"] = ipwhois.lookup_rdap()   
         if domain != None:
             import whois

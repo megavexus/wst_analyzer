@@ -1,12 +1,16 @@
 from .abstractAnalyzer import Analyzer
 from .scanTools import ScanTools
+from .exceptions import *
 
 class DomainAnalyzer(Analyzer):
 
     def __init__(self, domain, *args):
         self.domain = domain
         import socket
-        self.ip = socket.gethostbyname(domain)
+        try:
+            self.ip = socket.gethostbyname(domain)
+        except socket.gaierror:
+            raise DomainNotFoundException(domain)
         super(DomainAnalyzer, self).__init__(*args)
 
     def analyze(self):
