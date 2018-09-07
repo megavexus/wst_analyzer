@@ -2,7 +2,8 @@ from flask import Flask
 from flask import request, abort, jsonify
 import json
 
-from .analyzer import analyze_ip, analyze_domain, Analyzer
+from .analyzerFunctions import analyze_ip, analyze_domain
+from .analyzer.abstractAnalyzer import Analyzer
 
 ws = Flask("ipanalyzer")
 
