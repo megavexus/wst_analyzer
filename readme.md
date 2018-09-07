@@ -1,6 +1,6 @@
 # wst_analyzer
 
-Para arrancarlo / for run it:
+for run it:
 
 Windows:
 ```
@@ -19,3 +19,17 @@ export FLASK_APP=webservice.py
 export FLASK_ENV=development
 flask run
 ```
+
+examples:
+
+- all analyzers
+http://localhost:5000/analyzer/ip?=8.8.8.8
+http://localhost:5000/analyzer/?domain=www.google.com
+
+- only whois:
+http://localhost:5000/analyzer/whois/?domain=www.google.com
+
+- only shodan:
+http://localhost:5000/analyzer/shodan/?domain=www.google.com
+
+enjoy it!
