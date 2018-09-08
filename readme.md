@@ -52,4 +52,4 @@ http://localhost:5000/analyzer/shodan/?domain=www.google.com
 
 enjoy it!!!
 
-Javier Gutierrez Navio & Omar Rodríguez Soto (@orsoto)
+Javier Gutiérrez Navio & Omar Rodríguez Soto (@orsoto)
