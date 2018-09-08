@@ -32,6 +32,7 @@ examples:
 
 - all analyzers
 http://localhost:5000/analyzer/ip?=8.8.8.8
+
 http://localhost:5000/analyzer/?domain=www.google.com
 
 - only whois:
