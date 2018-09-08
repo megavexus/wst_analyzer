@@ -10,6 +10,8 @@ dependencies
 pip install -r requirements.txt
 ```
 
+create tokens.conf based on tokens.conf.example
+
 Windows:
 ```
 cd src
