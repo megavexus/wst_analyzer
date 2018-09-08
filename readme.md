@@ -1,6 +1,14 @@
 # wst_analyzer
 
+webservice about threat intelligence
+
 for run it:
+
+dependencies
+
+```
+pip install -r requirements.txt
+```
 
 Windows:
 ```
@@ -28,6 +36,9 @@ http://localhost:5000/analyzer/?domain=www.google.com
 
 - only whois:
 http://localhost:5000/analyzer/whois/?domain=www.google.com
+
+- only alienvault otx:
+http://localhost:5000/analyzer/otx/ip?=8.8.8.8
 
 - only shodan:
 http://localhost:5000/analyzer/shodan/?domain=www.google.com
