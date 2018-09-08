@@ -1,10 +1,10 @@
 # wst_analyzer
 
-webservice about threat intelligence
+Webservice about threat intelligence
 
 for run it:
 
-dependencies
+Dependencies
 
 ```
 pip install -r requirements.txt
@@ -30,7 +30,7 @@ export FLASK_ENV=development
 flask run
 ```
 
-examples:
+Examples:
 
 - all analyzers
 
@@ -50,6 +50,8 @@ http://localhost:5000/analyzer/otx/ip?=8.8.8.8
 
 http://localhost:5000/analyzer/shodan/?domain=www.google.com
 
-enjoy it!!!
+Enjoy it!!!
 
-Javier Gutiérrez Navio & Omar Rodríguez Soto (@orsoto)
+# Contributors
+
+Javier Gutiérrez Navío & Omar Rodríguez Soto (@orsoto)
