@@ -1,5 +1,5 @@
 tokens.conf
 venv
 .vscode
-*/__pycache__
+__pycache__
 *.pyo
