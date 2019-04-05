@@ -3,4 +3,5 @@ shodan
 ipwhois
 python-whois
 configparser
+retrying>=1.3.3
 OTXv2
