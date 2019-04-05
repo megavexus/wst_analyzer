@@ -30,7 +30,7 @@ http://localhost:5000/analyze/whois/?domain=www.google.com
 
 - only alienvault otx:
 
-http://localhost:5000/analyze/otx/ip?=8.8.8.8
+http://localhost:5000/analyze/otx/?ip=8.8.8.8
 
 - only shodan:
 
