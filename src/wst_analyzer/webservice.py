@@ -5,7 +5,7 @@ import json
 from .analyzerFunctions import analyze_ip, analyze_domain
 from .analyzer.abstractAnalyzer import Analyzer
 from .analyzer.exceptions import DomainNotFoundException, IPNotFoundException
-ws = Flask("ipanalyzer")
+ws = Flask("wst_analyzer")
 
 @ws.route("/")          # quitar cuando pongo el codigo
 @ws.route("/analyze")

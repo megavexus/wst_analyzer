@@ -1,7 +1,11 @@
 from .exceptions import *
+from retrying import retry
+
+NUM_MAX_RETRY=7
 
 class ScanTools(object):
-    @staticmethod 
+    @staticmethod
+    @retry(stop_max_attempt_number=NUM_MAX_RETRY) 
     def whois(ip=None, domain=None):
         if ip==None and domain==None: 
             raise Exception("No arguments provided")
@@ -20,6 +24,7 @@ class ScanTools(object):
         return results
 
     @staticmethod
+    @retry(stop_max_attempt_number=NUM_MAX_RETRY) 
     def otx(token, ip=None, domain=None):
         from OTXv2 import OTXv2, IndicatorTypes
         otx=OTXv2(token)
@@ -35,6 +40,7 @@ class ScanTools(object):
         return results 
 
     @staticmethod
+    @retry(stop_max_attempt_number=NUM_MAX_RETRY) 
     def shodan(token, ip=None, domain=None):
         if ip==None and domain==None: 
             raise Exception("No arguments provided")
