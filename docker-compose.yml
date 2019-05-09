@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+  wst_analyzer:
+    build: 
+      context: .
+      args:
+        HTTP_PROXY: 
+    env_file: .env
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/code
