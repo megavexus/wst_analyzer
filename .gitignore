@@ -3,3 +3,6 @@ venv
 .vscode
 __pycache__
 *.pyo
+*.pyc
+*.egg-info
+.env
