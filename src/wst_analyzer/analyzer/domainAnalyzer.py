@@ -1,17 +1,19 @@
+import socket
 from .abstractAnalyzer import Analyzer
 from .scanTools import ScanTools
 from .exceptions import *
 
 class DomainAnalyzer(Analyzer):
 
-    def __init__(self, domain, *args):
+    def __init__(self, domain, *args, **kwargs):
         self.domain = domain
-        import socket
+        self.ip = None
         try:
             self.ip = socket.gethostbyname(domain)
         except socket.gaierror:
-            raise DomainNotFoundException(domain)
-        super(DomainAnalyzer, self).__init__(*args)
+            #raise DomainNotFoundException(domain)
+            pass
+        super(DomainAnalyzer, self).__init__(*args, **kwargs)
 
     def analyze(self):
         if not self.all:
@@ -20,15 +22,14 @@ class DomainAnalyzer(Analyzer):
         else:
             self.analyze_opts = self.analyzers
 
+        scan_tools = ScanTools(tokens=self.TOKENS, proxy=self.proxy)
         for analyzer in self.analyze_opts:
             if analyzer == "shodan":
-                self.results['shodan'] = ScanTools.shodan(
-                    self.TOKENS["shodan"], domain=self.domain)
+                self.results['shodan'] = scan_tools.shodan(ip=self.ip, domain=self.domain)
             elif analyzer == "whois":
-                self.results['whois'] = ScanTools.whois(domain=self.domain)
+                self.results['whois'] = scan_tools.whois(ip=self.ip, domain=self.domain)
             elif analyzer == "otx":
-                self.results['otx'] = ScanTools.otx(
-                    self.TOKENS["otx"], domain=self.domain)
+                self.results['otx'] = scan_tools.otx(ip=self.ip, domain=self.domain)
 
     def report(self):
         return self.results

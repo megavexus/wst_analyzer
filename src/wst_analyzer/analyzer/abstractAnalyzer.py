@@ -1,7 +1,7 @@
 import configparser
 import os
 import logging
-FORMAT = "%(asctime)-15s %(clientip)s %(user)-8s %(message)s"
+FORMAT = "%(asctime)-15s %(message)s"
 logging.basicConfig(format=FORMAT)
 
 class Analyzer:
@@ -13,7 +13,7 @@ class Analyzer:
     ]
     logger = logging.getLogger() 
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         if args is None or not len(args) or args[0] == 'all':
             self.all = True
         else:
@@ -24,8 +24,9 @@ class Analyzer:
         settings = configparser.ConfigParser()
         # rutas absolutas desde el propio fichero
         dirname = os.path.dirname(os.path.abspath(__file__))
-        settings.read(os.path.join(dirname, "../..", 'tokens.conf'))
+        settings.read(os.path.join(dirname, "../../../", 'tokens.conf'))
         self.TOKENS = settings._sections['Tokens']
+        self.proxy = kwargs.get('proxy')
         self.results = {}
 
     def analyze(self):

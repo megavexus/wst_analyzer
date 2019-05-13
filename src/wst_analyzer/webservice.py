@@ -1,5 +1,6 @@
 from flask import Flask
 from flask import request, abort, jsonify
+import os
 import json
 
 from .analyzerFunctions import analyze_ip, analyze_domain
@@ -16,15 +17,18 @@ def ip_analyze(analyzer = None):
     try:
         ip = request.args.get('ip')
         domain = request.args.get('domain')
+        proxy = os.environ.get('http_proxy')
         if analyzer is None:
             analyzer = "all"
         elif not analyzer in Analyzer.analyzers:
             return abort(400, "Analizador invalido")
 
         if ip:
-            return jsonify(analyze_ip(ip, analyzer))
+            res = analyze_ip(ip, analyzer, proxy)
+            return jsonify(res)
         elif domain:
-            return jsonify(analyze_domain(domain, analyzer))
+            res = analyze_domain(domain, analyzer, proxy)
+            return jsonify(res)
         else:
             return abort(418, "I don't like coffee")
     except DomainNotFoundException as ex:
@@ -34,4 +38,4 @@ def ip_analyze(analyzer = None):
 
 if __name__ == "__main__":
     ws.debug = True
-    ws.run()
+    ws.run(host="0.0.0.0", debug=True)
