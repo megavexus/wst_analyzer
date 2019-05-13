@@ -4,8 +4,8 @@ services:
   wst_analyzer:
     build: 
       context: .
-      args:
-        HTTP_PROXY: http://10.139.122.15:3128
+      #args:
+        #HTTP_PROXY: http://10.139.122.15:3128
     env_file: .env
     ports:
       - "5000:5000"
