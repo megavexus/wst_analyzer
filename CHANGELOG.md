@@ -1,5 +1,9 @@
 # WST ANALYZER
 *Omar Rodriguez y Javier Gutiérrez*
+### v0.2.1
+### Fixed
+- Arreglado bug al hacer lookup_rdap de un dominio
+
 ### v0.2
 - Dockerizado
 - Corregidos error de lectura de token
