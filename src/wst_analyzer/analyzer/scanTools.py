@@ -4,6 +4,7 @@ from urllib.request import ProxyHandler
 import socket
 import whois
 from ipwhois import IPWhois
+from ipwhois.exceptions import HTTPLookupError
 
 from shodan import Shodan, exception
 from OTXv2 import OTXv2, IndicatorTypes
@@ -57,7 +58,10 @@ class ScanTools(object):
                 )
             except (ValueError):
                 raise IPNotFoundException(ip)
-            results["ip"] = ipwhois.lookup_rdap()   
+            try:
+                results["ip"] = ipwhois.lookup_rdap()   
+            except HTTPLookupError:
+                pass
         if domain != None:
             try:
                 results["domain"] = whois.whois(domain)
