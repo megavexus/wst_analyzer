@@ -4,10 +4,19 @@ services:
   wst_analyzer:
     build: 
       context: .
-      #args:
-      #  HTTP_PROXY: http://10.139.122.15:3128
-    env_file: .env
+      args:
+        - http_proxy
+        - https_proxy
+        - HTTP_PROXY
+        - HTTPS_PROXY
+        - no_proxy
+    environment:
+        - http_proxy
+        - https_proxy
+        - HTTP_PROXY
+        - HTTPS_PROXY
+        - no_proxy
     ports:
-      - "5001:5000"
+      - "5000:5000"
     volumes:
       - .:/code
