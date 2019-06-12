@@ -23,6 +23,8 @@ class ScanTools(object):
                 'https': proxy,
                 'ftp': proxy
             }
+        else:
+            self.proxy_dict = {}
 
         self.setup_otx()
         self.setup_shodan()
