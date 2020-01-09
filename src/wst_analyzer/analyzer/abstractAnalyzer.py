@@ -22,9 +22,8 @@ class Analyzer:
 
         # Cogemos las variables de configuracion
         settings = configparser.ConfigParser()
-        # rutas absolutas desde el propio fichero
-        dirname = os.path.dirname(os.path.abspath(__file__))
-        settings.read(os.path.join(dirname, "../../../", 'tokens.conf'))
+        tokens_file = kwargs['tokens_path']
+        settings.read(tokens_file)
         self.TOKENS = settings._sections['Tokens']
         self.proxy = kwargs.get('proxy')
         self.results = {}

@@ -13,7 +13,7 @@ REQUIREMENTS = [str(ir.req) for ir in parse_requirements(
 
 setup(
     name='wst_analyzer',
-    version='0.2.1',
+    version='0.2.2',
     description='Monitoring Asset API (shodan, whois, otx)',
 
     author='Javier Gutiérrez y Omar Rodriguez',
