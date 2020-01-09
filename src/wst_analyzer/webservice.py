@@ -3,10 +3,13 @@ from flask import request, abort, jsonify
 import os
 import json
 
-from .analyzerFunctions import analyze_ip, analyze_domain
-from .analyzer.abstractAnalyzer import Analyzer
-from .analyzer.exceptions import DomainNotFoundException, IPNotFoundException
+from wst_analyzer.analyzerFunctions import analyze_ip, analyze_domain
+from wst_analyzer.analyzer.abstractAnalyzer import Analyzer
+from wst_analyzer.analyzer.exceptions import DomainNotFoundException, IPNotFoundException
 ws = Flask("wst_analyzer")
+
+root_dirname = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+tokensfile_path = os.path.join(root_dirname, 'tokens.conf')
 
 @ws.route("/")          # quitar cuando pongo el codigo
 @ws.route("/analyze")
@@ -24,10 +27,10 @@ def ip_analyze(analyzer = None):
             return abort(400, "Analizador invalido")
 
         if ip:
-            res = analyze_ip(ip, analyzer, proxy)
+            res = analyze_ip(ip, analyzer, tokensfile_path, proxy)
             return jsonify(res)
         elif domain:
-            res = analyze_domain(domain, analyzer, proxy)
+            res = analyze_domain(domain, analyzer, tokensfile_path, proxy)
             return jsonify(res)
         else:
             return abort(418, "I don't like coffee")
@@ -38,4 +41,5 @@ def ip_analyze(analyzer = None):
 
 if __name__ == "__main__":
     ws.debug = True
-    ws.run(host="0.0.0.0", debug=True)
+    port = os.environ.get("WST_PORT", 5000)
+    ws.run(host="0.0.0.0", port=port, debug=True)
