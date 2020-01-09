@@ -1,12 +1,12 @@
 from .analyzer import *
 
-def analyze_ip(ip, analyzer, proxy):
-    analyzer = IPAnalyzer(ip, analyzer, proxy=proxy)
+def analyze_ip(ip, analyzer, tokens_file, proxy):
+    analyzer = IPAnalyzer(ip, analyzer, tokens_path=tokens_file, proxy=proxy)
     analyzer.analyze()
     return analyzer.report()
 
-def analyze_domain(domain, analyzer, proxy):
-    analyzer = DomainAnalyzer(domain, analyzer, proxy=proxy)
+def analyze_domain(domain, analyzer, tokens_file, proxy):
+    analyzer = DomainAnalyzer(domain, analyzer, tokens_path=tokens_file, proxy=proxy)
     analyzer.analyze()
     return analyzer.report()
 
