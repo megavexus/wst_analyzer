@@ -59,6 +59,19 @@ debug=1
 (Nota: Si lo vas a ejec)
 
 
+## Options
+
+If you are using it without the docker, only with flask, you can change the port number of the WS with the environment option `WST_PORT`.
+
+For example, if you want to run it in the port 3232, you can execute like:
+
+```
+pip3 install .
+export WST_PORT=3232
+python3 src/wst_analyzer/webservice.py
+```
+
+
 ## Usage
 
 - all analyzers
