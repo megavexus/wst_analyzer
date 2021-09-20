@@ -2,7 +2,9 @@ from .exceptions import *
 from urllib.request import ProxyHandler
 
 import socket
-import whois
+from wst_analyzer.whois import whois
+from wst_analyzer.whois.whois import NICClient
+
 from ipwhois import IPWhois
 from ipwhois.exceptions import HTTPLookupError
 
@@ -66,7 +68,7 @@ class ScanTools(object):
                 pass
         if domain != None:
             try:
-                results["domain"] = whois.whois(domain)
+                results["domain"] = whois(domain, flags=NICClient.WHOIS_RECURSE)
             except socket.gaierror:
                 pass
         return results

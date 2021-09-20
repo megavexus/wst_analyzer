@@ -10,7 +10,7 @@ with open('requirements.txt') as f:
 
 setup(
     name='wst_analyzer',
-    version='0.2.2',
+    version='0.3',
     description='Monitoring Asset API (shodan, whois, otx)',
 
     author='Javier Gutiérrez y Omar Rodriguez',
