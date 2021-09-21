@@ -1,5 +1,10 @@
 # WST ANALYZER
 *Omar Rodriguez y Javier Gutiérrez*
+
+## v0.3
+### Added
+- Adaptada librería de whois para reportar qué servicio de whois se ha usado para la identificación.
+
 ## v0.2.2
 ### Changed
 - Modulado mejor para instalarse por pip sin problemas.
