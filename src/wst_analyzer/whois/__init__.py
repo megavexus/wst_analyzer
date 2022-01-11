@@ -43,7 +43,7 @@ def whois(url, command=False, flags=0):
         whois_server, text_response = nic_client.whois_lookup(None, domain.encode('idna'), flags)
     response = WhoisEntry.load(domain, text_response)
     if "whois_server" not in response:
-        response['whois_server'] = whois_server if whois_server else extract_whois_server(text)
+        response['whois_server'] = whois_server if whois_server else extract_whois_server(text_response)
 
         if not response['whois_server']:
             print(text)
