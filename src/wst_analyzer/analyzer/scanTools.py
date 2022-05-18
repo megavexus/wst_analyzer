@@ -58,7 +58,7 @@ class ScanTools(object):
                 ipwhois = IPWhois(
                     ip, 
                     proxy_opener=self.proxy_handler,
-                    allow_permutations=True
+                    #allow_permutations=True
                 )
             except (ValueError):
                 raise IPNotFoundException(ip)
